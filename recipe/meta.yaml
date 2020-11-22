@@ -30,6 +30,7 @@ test:
     - pip check
     - pytest --pyargs link_traits
   requires:
+    - pip
     - pytest
     - traitlets
 
