@@ -7,20 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/link_traits-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/link_traits-{{ version }}.tar.gz
   sha256: 4e1f104ce3bcb9a1c16f838d19ff45ec7be9704df6565690de19b0a05d5820a9
 
 build:
-  number: 3
+  number: 4
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python {{ python_min }}
+    - setuptools
   run:
-    - python >=3.5
+    - python >={{ python_min }}
     - traits
 
 test:
@@ -33,6 +34,7 @@ test:
     - pip
     - pytest
     - traitlets
+    - python {{ python_min }}
 
 about:
   home: https://github.com/hyperspy/link_traits
